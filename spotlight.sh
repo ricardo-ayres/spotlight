@@ -18,7 +18,7 @@ IMGN=$((1 + $RANDOM % $NLINKS))
 LINK=$(echo $LINKS | cut -f $IMGN -d ' ')
 
 IMGLINK=$(curl -L -s $LINK |\
-	xmllint --html --xpath 'string(//figure/a/@href)' - 2>/dev/null)
+	xmllint --html --xpath 'string(//div[@class="entry"]/p/a/@href)' - 2>/dev/null)
 
 DESC=$(curl -L -s $LINK |\
 	xmllint --html --xpath '//h1/text()' - 2>/dev/null)
